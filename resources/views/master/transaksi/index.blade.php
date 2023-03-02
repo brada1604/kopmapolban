@@ -21,7 +21,7 @@
                         }
                     })
                 });
-
+                
                 window.location = "http://127.0.0.1:8000/master/transaksi?product_code=" + data.product_code;
             }
 

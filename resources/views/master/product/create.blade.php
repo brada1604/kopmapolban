@@ -13,6 +13,8 @@
                 var audio = new Audio("{{ asset('media/beep.mp3') }}");
                 audio.play();
                 $("#product_code").val(decodedText);
+                html5QrcodeScanner.clear();
+                html5QrcodeScanner.stop();
             }
 
             function onScanFailure(error) {
