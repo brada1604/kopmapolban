@@ -60,6 +60,18 @@ class ProductController extends Controller
         return view('master.product.create', compact('ProductCategory'));
     }
 
+    public function check_product($id){
+        $Product = Product::where('id', $id)->count();
+        
+
+        if ($Product == 0 ) {
+            return redirect('/master/product/create')->with(['success' => $id]);;
+        }
+        else{
+            return redirect('/product/add_stock/'.$id);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -115,6 +127,34 @@ class ProductController extends Controller
         $ProductCategory = ProductCategory::all();
         return view('master.product.edit', compact('Product','ProductCategory'));
     }
+
+    public function add_stock($id)
+    {
+        Log::info(Auth::user()->fullname . " Sedang mengedit product");
+        $Product = Product::where('id', $id)->get();
+        $ProductCategory = ProductCategory::all();
+        return view('master.product.add_stock', compact('Product','ProductCategory'));
+    }
+
+    public function update_stock(Request $Request)
+    {
+        try {
+            $Data = Product::where('id', $Request->product_code);
+
+            $Data->update([
+                'id' => $Request->product_code,
+                'product_stock' => $Request->product_stock + $Request->add_stock,
+            ]);
+            Log::info(Auth::user()->fullname . " Sedang Mengupdate product");
+            Alert::success('Congrats', 'You\'ve Successfully Add Stock');
+            return redirect()->route('product.index');
+        } catch (QueryException $e) {
+            Alert::error('Error', $e->getMessage());
+            return redirect()->route('product.index');
+        }
+    }
+
+
 
     /**
      * Update the specified resource in storage.

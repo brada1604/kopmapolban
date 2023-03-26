@@ -15,6 +15,7 @@
                     {data: 'no', name: 'no', render: function (data, type, row, meta) {
                             return meta.row + meta.settings._iDisplayStart + 1;
                     }, width: '5%', class: 'text-center'},
+                    { data: 'id', name: 'id'},
                     { data: 'product_name', name: 'product_name'},
                     { data: 'product_stock', name: 'product_stock'},
                     { data: 'product_category_name', name: 'product_category_name', class: 'text-center'},
@@ -36,7 +37,7 @@
                 <div class="card-header">
                     <div class="flex pb-4 -ml-3">
                         <a href="{{ route('product.create') }}" class="btn btn-primary shadow-none">
-                            <span class="fas fa-plus"></span> Create
+                            <span class="fas fa-plus"></span> Create / Add Stock
                         </a>
                     </div>
                 </div>
@@ -47,6 +48,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No</th>
+                                    <th class="text-center">Code</th>
                                     <th class="text-center">Name</th>
                                     <th class="text-center">Stock</th>
                                     <th class="text-center">Category</th>

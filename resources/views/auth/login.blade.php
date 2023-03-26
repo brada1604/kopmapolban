@@ -13,6 +13,7 @@
         @endif
 
         <form method="POST" action="{{ route('login') }}">
+            <center><b>KOPMA POLBAN</b></center>
             @csrf
 
             <div>

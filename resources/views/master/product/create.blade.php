@@ -13,6 +13,7 @@
                 var audio = new Audio("{{ asset('media/beep.mp3') }}");
                 audio.play();
                 $("#product_code").val(decodedText);
+                window.location.href = "/product/check/" + decodedText;
                 html5QrcodeScanner.clear();
                 html5QrcodeScanner.stop();
             }
@@ -41,7 +42,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Product Code</label>
                             <div class="col-sm-9">
-                                <input type="number" value="{{ old('product_code') }}" name="product_code" id="product_code" class="form-control" required>
+                                <input type="number" value="{{ old('product_code') ?? Session::get('success')}}" name="product_code" id="product_code" class="form-control" required>
                             </div>
                         </div>
 
