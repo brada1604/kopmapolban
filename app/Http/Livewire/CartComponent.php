@@ -103,6 +103,7 @@ class CartComponent extends Component
         $produk_list = Cart::content();
         
         $DataTransaksi  = [
+            'id_user' => Auth::user()->id,
             'status_pembayaran' => 1,
             'total_pembayaran' => $total_all,
             'nominal_uang' => $total_all,
@@ -143,9 +144,11 @@ class CartComponent extends Component
 
         $this->updateCart();
 
+        Log::info(Auth::user()->fullname . " Sedang menyelesaikan transaksi");
+
         return redirect()->route('transaksi.show', $lastTransaksiId);
         Alert::success('Congrats', 'You\'ve Successfully Checkout');
-        Log::info(Auth::user()->fullname . " Sedang menyelesaikan transaksi");
+        
 
     }
 }
