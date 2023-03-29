@@ -15,6 +15,7 @@ class Transaksi extends Model
     public $table = 'transaksi'; // dilakukan seperti ini agar tidak menjadi plural
 
     protected $fillable = [
+        'id_user',
         'status_pembayaran',
         'total_pembayaran',
         'nominal_uang',

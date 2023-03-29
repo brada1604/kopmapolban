@@ -30,5 +30,19 @@ class ProductCategorySeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
+
+        ProductCategory::create([
+            'product_category_name' => 'Sembako',
+            'product_category_slug' => 'Sembako',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        ProductCategory::create([
+            'product_category_name' => 'Sabun',
+            'product_category_slug' => 'Sabun',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }

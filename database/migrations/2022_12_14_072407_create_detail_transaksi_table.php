@@ -15,13 +15,17 @@ return new class extends Migration
     {
         Schema::create('detail_transaksi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_transaksi');
-            $table->bigInteger('id_product');
+            $table->unsignedBigInteger('id_transaksi');
+            $table->unsignedBigInteger('id_product');
             $table->float('price_buy', 20, 2, true);
             $table->bigInteger('qty');
             $table->float('subtotal', 20, 2, true);
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('id_product')->references('product_id')->on('products');
+            $table->foreign('id_transaksi')->references('id')->on('transaksi');
+            
         });
     }
 
